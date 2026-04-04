@@ -41,6 +41,8 @@
       --light: #f8fbfd;
       --border: #e5e7eb;
       --white: #ffffff;
+      --success: #25D366;
+      --danger: #ef4444;
     }
 
     /* Header */
@@ -61,6 +63,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 20px;
+      position: relative;
     }
 
     .logo {
@@ -104,6 +107,12 @@
       color: var(--primary);
     }
 
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
     .nav-cta {
       background: var(--primary);
       color: white;
@@ -112,10 +121,47 @@
       font-size: 14px;
       font-weight: 700;
       transition: 0.3s ease;
+      border: none;
+      cursor: pointer;
     }
 
     .nav-cta:hover {
       background: var(--primary-dark);
+    }
+
+    .enquiry-btn {
+      position: relative;
+      background: white;
+      border: 1px solid #dbe3ea;
+      color: var(--dark);
+      padding: 10px 16px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .enquiry-btn:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    .enquiry-count {
+      position: absolute;
+      top: -8px;
+      right: -6px;
+      background: var(--danger);
+      color: white;
+      min-width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      padding: 0 6px;
     }
 
     /* Hero */
@@ -179,6 +225,8 @@
       font-weight: 700;
       transition: 0.3s ease;
       font-size: 15px;
+      border: none;
+      cursor: pointer;
     }
 
     .btn-primary {
@@ -201,167 +249,74 @@
       color: var(--primary);
     }
 
-    .hero-card {
-      background: white;
-      border-radius: 28px;
-      padding: 28px;
-      box-shadow: 0 20px 60px rgba(15, 23, 42, 0.08);
-      border: 1px solid #eef2f7;
+    /* HERO SLIDER */
+    .hero-slider-wrap {
+      width: 100%;
+      max-width: 620px;
+      margin: 0 auto;
     }
 
-    .hero-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 14px;
+    .hero-slider {
+      position: relative;
+      width: 100%;
+      height: 520px;
+      border-radius: 32px;
+      background: transparent;
+      border: none;
+      box-shadow: none;
+      padding: 0;
     }
 
-    .hero-product {
-      background: var(--light);
-      border: 1px solid #eef2f7;
-      border-radius: 18px;
-      padding: 20px;
-      text-align: center;
-      transition: 0.3s ease;
+    .slide {
+      position: absolute;
+      inset: 18px;
+      opacity: 0;
+      transform: scale(1.02);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+      border-radius: 24px;
+      overflow: hidden;
+      pointer-events: none;
     }
 
-    .hero-product:hover {
-      transform: translateY(-4px);
-      border-color: rgba(17,181,245,0.35);
+    .slide.active {
+      opacity: 1;
+      transform: scale(1);
+      pointer-events: auto;
     }
 
-    .hero-product .icon {
-      font-size: 34px;
-      margin-bottom: 10px;
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 24px;
+      display: block;
+      background: transparent;
     }
 
-    .hero-product h4 {
-      font-size: 15px;
-      color: var(--dark);
-      margin-bottom: 6px;
+    .slider-btn {
+      display: none !important;
     }
 
-    .hero-product p {
-      font-size: 13px;
-      color: var(--text);
-      margin: 0;
+    .slider-dots {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 18px;
     }
 
-    /* ===== HERO RIGHT SIDE PRODUCT SLIDER ===== */
-.hero-slider-wrap {
-  width: 100%;
-  max-width: 620px;
-  margin: 0 auto;
-}
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.18);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
 
-.hero-slider {
-  position: relative;
-  width: 100%;
-  height: 520px;
-  border-radius: 32px;
-
-  /* 半透明玻璃感背景（推荐） */
-  background: transparent;
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
-  border: none;
-  box-shadow: none;
-  padding: 0;
-}
-
-/* 如果你要“完全透明”，把上面 background 改成 transparent 就行 */
-/* background: transparent; */
-
-.slide {
-  position: absolute;
-  inset: 18px;
-  opacity: 0;
-  transform: scale(1.02);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-  border-radius: 24px;
-  overflow: hidden;
-  pointer-events: none;
-}
-
-.slide.active {
-  opacity: 1;
-  transform: scale(1);
-  pointer-events: auto;
-}
-
-.slide img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* 如果你产品图要完整显示可改 contain */
-  border-radius: 24px;
-  display: block;
-  background: transparent;
-}
-
-/* 左右按钮 */
-  .slider-btn {
-  display: none !important;
-}
-
-/* dots */
-.slider-dots {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-top: 18px;
-}
-
-.dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 999px;
-  background: rgba(15, 23, 42, 0.18);
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.dot.active {
-  width: 30px;
-  background: #0ea5e9;
-}
-
-/* 如果你的 hero 是左右两栏，建议右边更好看 */
-.hero-right,
-.hero-visual {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* 手机版 */
-@media (max-width: 992px) {
-  .hero-slider {
-    height: 380px;
-    max-width: 100%;
-  }
-}
-
-@media (max-width: 768px) {
-  .hero-slider {
-    height: 300px;
-    padding: 12px;
-    border-radius: 24px;
-  }
-
-  .slide {
-    inset: 12px;
-    border-radius: 18px;
-  }
-
-  .slide img {
-    border-radius: 18px;
-  }
-
-  .slider-btn {
-    width: 38px;
-    height: 38px;
-    font-size: 18px;
-  }
-}
+    .dot.active {
+      width: 30px;
+      background: #0ea5e9;
+    }
 
     /* Sections */
     .section {
@@ -472,6 +427,9 @@
       border: 1px solid #eef2f7;
       box-shadow: 0 12px 35px rgba(15, 23, 42, 0.04);
       transition: 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
     }
 
     .product-card:hover {
@@ -480,109 +438,77 @@
     }
 
     .product-gallery {
-  padding: 16px 16px 0;
-}
+      padding: 16px 16px 0;
+    }
 
-.product-main-image {
-  width: 100%;
-  height: 240px;
-  border-radius: 18px;
-  overflow: hidden;
-  background: linear-gradient(135deg, #eaf8ff, #f7fcff);
-  border: 1px solid #eef2f7;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+    .product-main-image {
+      width: 100%;
+      height: 240px;
+      border-radius: 18px;
+      overflow: hidden;
+      background: linear-gradient(135deg, #eaf8ff, #f7fcff);
+      border: 1px solid #eef2f7;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-.product-main-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+    .product-main-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
 
-.product-main-placeholder {
-  font-size: 64px;
-}
+    .product-thumbs {
+      display: flex;
+      gap: 10px;
+      margin-top: 12px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+    }
 
-.product-thumbs {
-  display: flex;
-  gap: 10px;
-  margin-top: 12px;
-  overflow-x: auto;
-  padding-bottom: 4px;
-}
+    .product-thumbs::-webkit-scrollbar {
+      height: 6px;
+    }
 
-.product-thumbs::-webkit-scrollbar {
-  height: 6px;
-}
+    .product-thumbs::-webkit-scrollbar-thumb {
+      background: #dbeafe;
+      border-radius: 999px;
+    }
 
-.product-thumbs::-webkit-scrollbar-thumb {
-  background: #dbeafe;
-  border-radius: 999px;
-}
+    .product-thumb {
+      min-width: 64px;
+      width: 64px;
+      height: 64px;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 2px solid transparent;
+      cursor: pointer;
+      background: #f8fbfd;
+      flex-shrink: 0;
+      transition: 0.25s ease;
+    }
 
-.product-thumb {
-  min-width: 64px;
-  width: 64px;
-  height: 64px;
-  border-radius: 12px;
-  overflow: hidden;
-  border: 2px solid transparent;
-  cursor: pointer;
-  background: #f8fbfd;
-  flex-shrink: 0;
-  transition: 0.25s ease;
-}
+    .product-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
 
-.product-thumb img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+    .product-thumb.active {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(17,181,245,0.12);
+    }
 
-.product-thumb.active {
-  border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(17,181,245,0.12);
-}
-
-.product-thumb:hover {
-  transform: translateY(-2px);
-}
-
-.add-cart-btn {
-  margin-bottom: 12px;
-  padding: 10px 14px;
-  background: var(--primary);
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
-.add-cart-btn:hover {
-  background: var(--primary-dark);
-}
-
-@media (max-width: 768px) {
-  .product-main-image {
-    height: 220px;
-  }
-
-.product-size select {
-  padding: 5px;
-  border-radius: 5px;
-}
-
-  .product-thumb {
-    width: 58px;
-    height: 58px;
-    min-width: 58px;
-  }
-}
+    .product-thumb:hover {
+      transform: translateY(-2px);
+    }
 
     .product-content {
       padding: 22px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
     }
 
     .product-content h3 {
@@ -597,28 +523,66 @@
       margin-bottom: 14px;
     }
 
+    .add-cart-btn {
+      margin-bottom: 12px;
+      padding: 10px 14px;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: 700;
+      transition: 0.3s ease;
+    }
+
+    .add-cart-btn:hover {
+      background: var(--primary-dark);
+    }
+
     .product-size {
-  margin: 10px 0;
-}
+      margin: 10px 0 14px;
+    }
 
-.size-btn {
-  border: 1px solid #ccc;
-  background: white;
-  padding: 6px 12px;
-  margin: 5px;
-  cursor: pointer;
-  border-radius: 5px;
-}
+    .product-size span {
+      display: block;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 8px;
+    }
 
-.size-btn.active {
-  background: black;
-  color: white;
-}
+    .size-btn {
+      border: 1px solid #cbd5e1;
+      background: white;
+      padding: 7px 12px;
+      margin: 4px 6px 0 0;
+      cursor: pointer;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      transition: 0.25s ease;
+    }
+
+    .size-btn.active {
+      background: var(--dark);
+      color: white;
+      border-color: var(--dark);
+    }
+
+    .size-btn:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    .size-btn.active:hover {
+      color: white;
+    }
 
     .product-tags {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
+      margin-top: auto;
     }
 
     .tag {
@@ -698,6 +662,98 @@
 
     .cta .btn:hover {
       background: #f3fbff;
+    }
+
+    /* Address & Map Section */
+    .address-section {
+      padding: 80px 20px;
+      background: #f8fafc;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .address-heading {
+      text-align: center;
+      margin-bottom: 12px;
+    }
+
+    .address-heading h2 {
+      font-size: 38px;
+      color: var(--dark);
+      margin-bottom: 10px;
+    }
+
+    .address-heading p {
+      color: var(--text);
+      max-width: 760px;
+      margin: 0 auto;
+      font-size: 16px;
+    }
+
+    .address-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.3fr;
+      gap: 30px;
+      align-items: stretch;
+      margin-top: 40px;
+    }
+
+    .address-card {
+      background: #ffffff;
+      padding: 35px;
+      border-radius: 18px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .address-card h3 {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      color: #0f172a;
+    }
+
+    .address-card p {
+      margin-bottom: 18px;
+      color: #475569;
+      line-height: 1.8;
+      font-size: 1rem;
+    }
+
+    .map-card {
+      border-radius: 18px;
+      overflow: hidden;
+      min-height: 420px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      background: #fff;
+    }
+
+    .map-card iframe {
+      width: 100%;
+      height: 100%;
+      min-height: 420px;
+      display: block;
+    }
+
+    .map-btn {
+      display: inline-block;
+      margin-top: 10px;
+      background: #16a34a;
+      color: #fff;
+      padding: 12px 22px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s ease;
+    }
+
+    .map-btn:hover {
+      background: #15803d;
+      transform: translateY(-2px);
     }
 
     /* Contact */
@@ -818,6 +874,8 @@
       font-size: 24px;
       box-shadow: 0 10px 24px rgba(0,0,0,0.16);
       transition: 0.3s ease;
+      border: none;
+      cursor: pointer;
     }
 
     .float-btn:hover {
@@ -832,11 +890,130 @@
       background: var(--primary);
     }
 
+    .top-btn {
+      background: #0f172a;
+      display: none;
+    }
+
+    .top-btn.show {
+      display: flex;
+    }
+
+    /* Modal */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.5);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+      padding: 20px;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .modal {
+      width: 100%;
+      max-width: 560px;
+      background: white;
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.2);
+      max-height: 80vh;
+      overflow-y: auto;
+    }
+
+    .modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .modal-header h3 {
+      font-size: 24px;
+      color: var(--dark);
+    }
+
+    .close-btn {
+      border: none;
+      background: #f1f5f9;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 20px;
+      color: var(--dark);
+    }
+
+    .enquiry-list {
+      display: grid;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .enquiry-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      padding: 14px;
+      border-radius: 16px;
+      background: var(--light);
+      border: 1px solid #eaf2f7;
+    }
+
+    .enquiry-item span {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--dark);
+    }
+
+    .remove-item-btn {
+      border: none;
+      background: #fee2e2;
+      color: #b91c1c;
+      padding: 8px 10px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .empty-enquiry {
+      text-align: center;
+      color: var(--text);
+      padding: 18px;
+      background: #f8fbfd;
+      border: 1px dashed #cbd5e1;
+      border-radius: 16px;
+    }
+
+    .modal-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn-danger {
+      background: var(--danger);
+      color: white;
+    }
+
+    .btn-danger:hover {
+      background: #dc2626;
+    }
+
     /* Responsive */
     @media (max-width: 1024px) {
       .hero-inner,
       .about-grid,
-      .contact-grid {
+      .contact-grid,
+      .address-grid {
         grid-template-columns: 1fr;
       }
 
@@ -850,6 +1027,13 @@
 
       .hero h1 {
         font-size: 42px;
+      }
+    }
+
+    @media (max-width: 992px) {
+      .hero-slider {
+        height: 380px;
+        max-width: 100%;
       }
     }
 
@@ -870,6 +1054,12 @@
         justify-content: center;
       }
 
+      .nav-actions {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
       .hero {
         padding-top: 50px;
       }
@@ -882,7 +1072,18 @@
         font-size: 16px;
       }
 
-      .hero-grid,
+      .hero-slider {
+        height: 300px;
+      }
+
+      .slide {
+        inset: 12px;
+      }
+
+      .slide img {
+        border-radius: 18px;
+      }
+
       .stats,
       .product-grid,
       .why-grid {
@@ -894,6 +1095,10 @@
       }
 
       .section-title {
+        font-size: 30px;
+      }
+
+      .address-heading h2 {
         font-size: 30px;
       }
 
@@ -911,16 +1116,48 @@
         height: 54px;
         font-size: 22px;
       }
+
+      .product-main-image {
+        height: 220px;
+      }
+
+      .product-thumb {
+        width: 58px;
+        height: 58px;
+        min-width: 58px;
+      }
+
+      .map-card,
+      .map-card iframe {
+        min-height: 320px;
+      }
     }
   </style>
 </head>
 <body>
 
+  <!-- Enquiry Modal -->
+  <div class="modal-overlay" id="enquiryModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h3>Your Enquiry List</h3>
+        <button class="close-btn" onclick="closeEnquiryModal()">×</button>
+      </div>
+
+      <div id="enquiryListContainer" class="enquiry-list"></div>
+
+      <div class="modal-actions">
+        <button class="btn btn-secondary" onclick="closeEnquiryModal()">Continue Browsing</button>
+        <button class="btn btn-primary" onclick="scrollToContact()">Proceed to Enquiry Form</button>
+        <button class="btn btn-danger" onclick="clearEnquiryList()">Clear All</button>
+      </div>
+    </div>
+  </div>
+
   <!-- Header -->
   <header>
     <div class="nav">
       <div class="logo">
-        <!-- Replace with your real logo file path -->
         <img src="images/logo.png" alt="Proper Pack Logo" />
         <div class="logo-text">
           <strong>Proper Pack (M) Sdn Bhd</strong>
@@ -932,10 +1169,17 @@
         <a href="#about">About</a>
         <a href="#products">Products</a>
         <a href="#whyus">Why Us</a>
+        <a href="#location">Location</a>
         <a href="#contact">Contact</a>
       </div>
 
-      <a href="https://wa.me/60183894753" class="nav-cta" target="_blank">WhatsApp Us</a>
+      <div class="nav-actions">
+        <button class="enquiry-btn" onclick="openEnquiryModal()">
+          Enquiry List
+          <span class="enquiry-count" id="enquiryCount">0</span>
+        </button>
+        <a href="https://wa.me/60183894753" class="nav-cta" target="_blank">WhatsApp Us</a>
+      </div>
     </div>
   </header>
 
@@ -955,32 +1199,27 @@
       </div>
 
       <div class="hero-slider-wrap">
-  <div class="hero-slider">
-    <div class="slide active">
-      <img src="images/maskpng.png" alt="Face Masks">
-    </div>
-    <div class="slide">
-      <img src="images/nitritepng.png" alt="HDPE Hand Gloves">
-    </div>
-    <div class="slide">
-      <img src="images/cpepng.png" alt="CPE Hand Gloves">
-    </div>
-    <div class="slide">
-      <img src="images/frwcpng.png" alt="Food wraps with cutter">
-    </div>
+        <div class="hero-slider" id="heroSlider">
+          <div class="slide active">
+            <img src="images/maskpng.png" alt="Face Masks">
+          </div>
+          <div class="slide">
+            <img src="images/nitritepng.png" alt="Nitrile Gloves">
+          </div>
+          <div class="slide">
+            <img src="images/cpepng.png" alt="CPE Hand Gloves">
+          </div>
+          <div class="slide">
+            <img src="images/frwcpng.png" alt="Food Wraps with Cutter">
+          </div>
+        </div>
 
-    <button class="slider-btn prev" onclick="changeSlide(-1)">❮</button>
-    <button class="slider-btn next" onclick="changeSlide(1)">❯</button>
-  </div>
-
-  <div class="slider-dots">
-    <span class="dot active" onclick="goToSlide(0)"></span>
-    <span class="dot" onclick="goToSlide(1)"></span>
-    <span class="dot" onclick="goToSlide(2)"></span>
-    <span class="dot" onclick="goToSlide(3)"></span>
-  </div>
-</div>
-      
+        <div class="slider-dots">
+          <span class="dot active" onclick="goToSlide(0)"></span>
+          <span class="dot" onclick="goToSlide(1)"></span>
+          <span class="dot" onclick="goToSlide(2)"></span>
+          <span class="dot" onclick="goToSlide(3)"></span>
+        </div>
       </div>
     </div>
   </section>
@@ -1041,208 +1280,307 @@
 
     <div class="product-grid">
 
-  <!-- Product 1 -->
-  <div class="product-card" data-name="Face Masks">
-    <div class="product-gallery">
-      <div class="product-main-image">
-        <img src="images/mask.png" alt="Face Masks" class="main-product-img">
-      </div>
-      <div class="product-thumbs">
-        <div class="product-thumb active" onclick="changeProductImage(this, 'images/mask.png')">
-          <img src="images/mask.png" alt="Face Mask 1">
+      <!-- Product 1 -->
+      <div class="product-card" data-name="Face Masks">
+        <div class="product-gallery">
+          <div class="product-main-image">
+            <img src="images/mask.png" alt="Face Masks" class="main-product-img">
+          </div>
+          <div class="product-thumbs">
+            <div class="product-thumb active" onclick="changeProductImage(this, 'images/mask.png')">
+              <img src="images/mask.png" alt="Face Mask 1">
+            </div>
+          </div>
+        </div>
+
+        <div class="product-content">
+          <button class="add-cart-btn" onclick="addToCart(this)">Add to Enquiry List</button>
+          <h3>Face Masks</h3>
+          <p>Disposable and practical face masks suitable for workplaces, food handling environments, and daily commercial use.</p>
+
+          <div class="product-size">
+            <span>Colour:</span>
+            <button class="size-btn active" data-color="Black" onclick="selectOption(this)">Black</button>
+            <button class="size-btn" data-color="Blue" onclick="selectOption(this)">Blue</button>
+          </div>
+
+          <div class="product-tags">
+            <span class="tag">Disposable</span>
+            <span class="tag">Comfort Fit</span>
+            <span class="tag">Hygiene Use</span>
+          </div>
         </div>
       </div>
+
+      <!-- Product 2 -->
+      <div class="product-card" data-name="Nitrile Gloves">
+        <div class="product-gallery">
+          <div class="product-main-image">
+            <img src="images/nitrite.png" alt="Nitrile Gloves" class="main-product-img">
+          </div>
+          <div class="product-thumbs">
+            <div class="product-thumb active" onclick="changeProductImage(this, 'images/nitrite.png')">
+              <img src="images/nitrite.png" alt="Nitrile Gloves 1">
+            </div>
+            <div class="product-thumb" onclick="changeProductImage(this, 'images/nitriteblue.jpg')">
+              <img src="images/nitriteblue.jpg" alt="Nitrile Gloves 2">
+            </div>
+            <div class="product-thumb" onclick="changeProductImage(this, 'images/nitriteblack.jpg')">
+              <img src="images/nitriteblack.jpg" alt="Nitrile Gloves 3">
+            </div>
+          </div>
+        </div>
+        <div class="product-content">
+          <button class="add-cart-btn" onclick="addToCart(this)">Add to Enquiry List</button>
+          <h3>Nitrile Gloves</h3>
+          <p>Reliable nitrile gloves for food preparation, hygienic handling, kitchen operations, and general commercial use.</p>
+
+          <div class="product-size">
+            <span>Size:</span>
+            <button class="size-btn active" data-size="S" onclick="selectOption(this)">S</button>
+            <button class="size-btn" data-size="M" onclick="selectOption(this)">M</button>
+            <button class="size-btn" data-size="L" onclick="selectOption(this)">L</button>
+            <button class="size-btn" data-size="XL" onclick="selectOption(this)">XL</button>
+          </div>
+
+          <div class="product-tags">
+            <span class="tag">Food Handling</span>
+            <span class="tag">Disposable</span>
+            <span class="tag">Safe Use</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 3 -->
+      <div class="product-card" data-name="Food Wraps with Cutter">
+        <div class="product-gallery">
+          <div class="product-main-image">
+            <img src="images/foodwrapwithcutter.jpg" alt="Food Wraps" class="main-product-img">
+          </div>
+          <div class="product-thumbs">
+            <div class="product-thumb active" onclick="changeProductImage(this, 'images/foodwrapwithcutter.jpg')">
+              <img src="images/foodwrapwithcutter.jpg" alt="Food Wraps 1">
+            </div>
+            <div class="product-thumb" onclick="changeProductImage(this, 'images/frwc12.jpg')">
+              <img src="images/frwc12.jpg" alt="Food Wraps 2">
+            </div>
+            <div class="product-thumb" onclick="changeProductImage(this, 'images/frwc18.jpg')">
+              <img src="images/frwc18.jpg" alt="Food Wraps 3">
+            </div>
+          </div>
+        </div>
+        <div class="product-content">
+          <button class="add-cart-btn" onclick="addToCart(this)">Add to Enquiry List</button>
+          <h3>Food Wraps</h3>
+          <p>Flexible food wrapping solutions to help preserve freshness, improve storage, and support takeaway or kitchen operations.</p>
+
+          <div class="product-size">
+            <span>Size:</span>
+            <button class="size-btn active" data-size='12"' onclick="selectOption(this)">12"</button>
+            <button class="size-btn" data-size='18"' onclick="selectOption(this)">18"</button>
+          </div>
+
+          <div class="product-tags">
+            <span class="tag">Freshness</span>
+            <span class="tag">Kitchen Use</span>
+            <span class="tag">F&B Supply</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 4 -->
+      <div class="product-card" data-name="Pop Up Tissue">
+        <div class="product-gallery">
+          <div class="product-main-image">
+            <img src="images/popup1.png" alt="Pop Up Tissue" class="main-product-img">
+          </div>
+          <div class="product-thumbs">
+            <div class="product-thumb active" onclick="changeProductImage(this, 'images/popup1.png')">
+              <img src="images/popup1.png" alt="Pop Up Tissue 1">
+            </div>
+            <div class="product-thumb" onclick="changeProductImage(this, 'images/popuptissue.jpg')">
+              <img src="images/popuptissue.jpg" alt="Pop Up Tissue 2">
+            </div>
+            <div class="product-thumb" onclick="changeProductImage(this, 'images/popuptissue1.jpg')">
+              <img src="images/popuptissue1.jpg" alt="Pop Up Tissue 3">
+            </div>
+          </div>
+        </div>
+        <div class="product-content">
+          <button class="add-cart-btn" onclick="addToCart(this)">Add to Enquiry List</button>
+          <h3>Pop Up Tissue</h3>
+          <p>Convenient and hygienic pop-up tissue for easy dispensing, daily cleaning, workplace use, and commercial environments.</p>
+
+          <div class="product-tags">
+            <span class="tag">Soft & Gentle</span>
+            <span class="tag">Hygienic Use</span>
+            <span class="tag">Easy Dispense</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 5 -->
+      <div class="product-card" data-name="CPE Gloves">
+        <div class="product-gallery">
+          <div class="product-main-image">
+            <img src="images/cpe.png" alt="CPE Gloves" class="main-product-img">
+          </div>
+          <div class="product-thumbs">
+            <div class="product-thumb active" onclick="changeProductImage(this, 'images/cpe.png')">
+              <img src="images/cpe.png" alt="CPE Gloves 1">
+            </div>
+            <div class="product-thumb" onclick="changeProductImage(this, 'images/cpe1.png')">
+              <img src="images/cpe1.png" alt="CPE Gloves 2">
+            </div>
+          </div>
+        </div>
+        <div class="product-content">
+          <button class="add-cart-btn" onclick="addToCart(this)">Add to Enquiry List</button>
+          <h3>CPE Gloves</h3>
+          <p>Lightweight CPE gloves suitable for food handling, hygiene protection, and general disposable use. Ideal for restaurants, kitchens, and food service operations.</p>
+
+          <div class="product-size">
+            <span>Size:</span>
+            <button class="size-btn active" data-size="M" onclick="selectOption(this)">M</button>
+            <button class="size-btn" data-size="L" onclick="selectOption(this)">L</button>
+          </div>
+
+          <div class="product-tags">
+            <span class="tag">CPE Material</span>
+            <span class="tag">Disposable</span>
+            <span class="tag">Food Handling</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 6 -->
+      <div class="product-card" data-name="HDPE Gloves">
+        <div class="product-gallery">
+          <div class="product-main-image">
+            <img src="images/hdpegloves.jpg" alt="HDPE Gloves" class="main-product-img">
+          </div>
+          <div class="product-thumbs">
+            <div class="product-thumb active" onclick="changeProductImage(this, 'images/hdpegloves.jpg')">
+              <img src="images/hdpegloves.jpg" alt="HDPE Gloves 1">
+            </div>
+            <div class="product-thumb" onclick="changeProductImage(this, 'images/hdpegloves1.jpg')">
+              <img src="images/hdpegloves1.jpg" alt="HDPE Gloves 2">
+            </div>
+          </div>
+        </div>
+        <div class="product-content">
+          <button class="add-cart-btn" onclick="addToCart(this)">Add to Enquiry List</button>
+          <h3>HDPE Gloves</h3>
+          <p>Sturdy HDPE gloves designed for durability and protection in various industrial and commercial applications.</p>
+
+          <div class="product-tags">
+            <span class="tag">HDPE Disposable Gloves</span>
+            <span class="tag">Food Handling Safe</span>
+            <span class="tag">Disposable & Hygienic</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 7 -->
+      <div class="product-card" data-name="Hairnet">
+        <div class="product-gallery">
+          <div class="product-main-image">
+            <img src="images/hairnet.png" alt="Hairnet" class="main-product-img">
+          </div>
+          <div class="product-thumbs">
+            <div class="product-thumb active" onclick="changeProductImage(this, 'images/hairnet.png')">
+              <img src="images/hairnet.png" alt="Hairnet 1">
+            </div>
+          </div>
+        </div>
+        <div class="product-content">
+          <button class="add-cart-btn" onclick="addToCart(this)">Add to Enquiry List</button>
+          <h3>Hairnet</h3>
+          <p>High-quality hairnets designed to keep hair out of food and products, ensuring hygiene and compliance.</p>
+
+          <div class="product-size">
+            <span>Colour:</span>
+            <button class="size-btn active" data-color="Blue" onclick="selectOption(this)">Blue</button>
+            <button class="size-btn" data-color="Black" onclick="selectOption(this)">Black</button>
+            <button class="size-btn" data-color="White" onclick="selectOption(this)">White</button>
+          </div>
+
+          <div class="product-tags">
+            <span class="tag">Disposable Hairnet</span>
+            <span class="tag">Comfortable Fit</span>
+            <span class="tag">Hygienic Protection</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 8 -->
+      <div class="product-card" data-name="PVC Food Wrap">
+        <div class="product-gallery">
+          <div class="product-main-image">
+            <img src="images/pvcwrap.png" alt="PVC Food Wrap" class="main-product-img">
+          </div>
+          <div class="product-thumbs">
+            <div class="product-thumb active" onclick="changeProductImage(this, 'images/pvcwrap.png')">
+              <img src="images/pvcwrap.png" alt="PVC Food Wrap 1">
+            </div>
+            <div class="product-thumb" onclick="changeProductImage(this, 'images/pvcwrap1.png')">
+              <img src="images/pvcwrap1.png" alt="PVC Food Wrap 2">
+            </div>
+          </div>
+        </div>
+
+        <div class="product-content">
+          <button class="add-cart-btn" onclick="addToCart(this)">Add to Enquiry List</button>
+          <h3>PVC Food Wrap</h3>
+          <p>High-quality PVC food wrap designed for safe and effective food packaging and storage.</p>
+
+          <div class="product-size">
+            <span>Size:</span>
+            <button class="size-btn active" data-size='8"' onclick="selectOption(this)">8"</button>
+            <button class="size-btn" data-size='10"' onclick="selectOption(this)">10"</button>
+            <button class="size-btn" data-size='12"' onclick="selectOption(this)">12"</button>
+            <button class="size-btn" data-size='16"' onclick="selectOption(this)">16"</button>
+            <button class="size-btn" data-size='18"' onclick="selectOption(this)">18"</button>
+          </div>
+
+          <div class="product-tags">
+            <span class="tag">Freshness Protection</span>
+            <span class="tag">Food Safe Use</span>
+            <span class="tag">Packaging Essential</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 9 -->
+      <div class="product-card" data-name="Clear Tape">
+        <div class="product-gallery">
+          <div class="product-main-image">
+            <img src="images/tape.png" alt="Tape" class="main-product-img">
+          </div>
+          <div class="product-thumbs">
+            <div class="product-thumb active" onclick="changeProductImage(this, 'images/tape.png')">
+              <img src="images/tape.png" alt="Tape 1">
+            </div>
+            <div class="product-thumb" onclick="changeProductImage(this, 'images/tape1.png')">
+              <img src="images/tape1.png" alt="Tape 2">
+            </div>
+          </div>
+        </div>
+        <div class="product-content">
+          <button class="add-cart-btn" onclick="addToCart(this)">Add to Enquiry List</button>
+          <h3>Clear Tape</h3>
+          <p>High-quality tape designed for secure sealing, carton packing, and daily industrial or commercial packaging use.</p>
+
+          <div class="product-tags">
+            <span class="tag">Secure Sealing</span>
+            <span class="tag">Packaging Essential</span>
+            <span class="tag">Daily Commercial Use</span>
+          </div>
+        </div>
+      </div>
+
     </div>
-
-    <div class="product-content">
-        <button class="add-cart-btn" onclick="addToCart(this)">Add to Enquiry</button>
-  <h3>Face Masks</h3>
-  <p>Disposable and practical face masks suitable for workplaces, food handling environments, and daily commercial use.</p>
-
-  <div class="product-size">
-  <span>Colour:</span>
-  <button class="size-btn active" data-color="Black" onclick="selectColor(this)">Black</button>
-  <button class="size-btn" data-color="Blue" onclick="selectColor(this)">Blue</button>
-</div>
-
-  <div class="product-tags">
-    <span class="tag">Disposable</span>
-    <span class="tag">Comfort Fit</span>
-    <span class="tag">Hygiene Use</span>
-  </div>
-</div>
-  </div>
-
-  <!-- Product 2 -->
-  <div class="product-card" data-name="Nitrile Gloves">
-    <div class="product-gallery">
-      <div class="product-main-image">
-        <img src="images/nitrite.png" alt="Hand Gloves" class="main-product-img">
-      </div>
-      <div class="product-thumbs">
-        <div class="product-thumb active" onclick="changeProductImage(this, 'images/nitrite.png')">
-          <img src="images/nitrite.png" alt="Hand Gloves 1">
-        </div>
-        <div class="product-thumb" onclick="changeProductImage(this, 'images/nitriteblue.jpg')">
-          <img src="images/nitriteblue.jpg" alt="Hand Gloves 2">
-        </div>
-        <div class="product-thumb" onclick="changeProductImage(this, 'images/nitriteblack.jpg')">
-          <img src="images/nitriteblack.jpg" alt="Hand Gloves 3">
-        </div>
-      </div>
-    </div>
-    <div class="product-content">
-        <button class="add-cart-btn" onclick="addToCart(this)">Add to Enquiry</button>
-      <h3>Hand Gloves</h3>
-      <p>Reliable gloves for food preparation, hygiene handling, kitchen operations, and general business applications.</p>
-
-      <div class="product-size">
-  <span>Size:</span>
-  <button class="size-btn active" data-size="S" onclick="selectColor(this)">S</button>
-  <button class="size-btn" data-size="M" onclick="selectColor(this)">M</button>
-  <button class="size-btn" data-size="L" onclick="selectColor(this)">L</button>
-  <button class="size-btn" data-size="XL" onclick="selectColor(this)">XL</button>
-</div>
-
-      <div class="product-tags">
-        <span class="tag">Food Handling</span>
-        <span class="tag">Disposable</span>
-        <span class="tag">Safe Use</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- Product 3 -->
-  <div class="product-card" data-name="Food Wraps with Cutter">
-    <div class="product-gallery">
-      <div class="product-main-image">
-        <img src="images/foodwrapwithcutter.jpg" alt="Food Wraps" class="main-product-img">
-      </div>
-      <div class="product-thumbs">
-        <div class="product-thumb active" onclick="changeProductImage(this, 'images/foodwrapwithcutter.jpg')">
-          <img src="images/foodwrapwithcutter.jpg" alt="Food Wraps 1">
-        </div>
-        <div class="product-thumb" onclick="changeProductImage(this, 'images/frwc12.jpg')">
-          <img src="images/frwc12.jpg" alt="Food Wraps 2">
-        </div>
-        <div class="product-thumb" onclick="changeProductImage(this, 'images/frwc18.jpg')">
-          <img src="images/frwc18.jpg" alt="Food Wraps 3">
-        </div>
-      </div>
-    </div>
-    <div class="product-content">
-        <button class="add-cart-btn" onclick="addToCart(this)">Add to Enquiry</button>
-      <h3>Food Wraps</h3>
-      <p>Flexible food wrapping solutions to help preserve freshness, improve storage, and support takeaway or kitchen operations.</p>
-
-<div class="product-size">
-  <span>Size:</span>
-  <button class="size-btn active" onclick="selectColor(this)">12"</button>
-  <button class="size-btn" onclick="selectColor(this)">18"</button>
-</div>
-
-      <div class="product-tags">
-        <span class="tag">Freshness</span>
-        <span class="tag">Kitchen Use</span>
-        <span class="tag">F&B Supply</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- Product 4 -->
-  <div class="product-card" data-name="Pop Up Tissue">
-    <div class="product-gallery">
-      <div class="product-main-image">
-        <img src="images/popup1.png" alt="Pop Up Tissue" class="main-product-img">
-      </div>
-      <div class="product-thumbs">
-        <div class="product-thumb active" onclick="changeProductImage(this, 'images/popup1.png')">
-          <img src="images/popup1.png" alt="Pop Up Tissue 1">
-        </div>
-        <div class="product-thumb" onclick="changeProductImage(this, 'images/popuptissue.jpg')">
-          <img src="images/popuptissue.jpg" alt="Pop Up Tissue 2">
-        </div>
-        <div class="product-thumb" onclick="changeProductImage(this, 'images/popuptissue1.jpg')">
-          <img src="images/popuptissue1.jpg" alt="Pop Up Tissue 3">
-        </div>
-      </div>
-    </div>
-    <div class="product-content">
-        <button class="add-cart-btn" onclick="addToCart(this)">Add to Enquiry</button>
-      <h3>Pop Up Tissue</h3>
-      <p>Convenient and hygienic pop-up tissue designed for easy dispensing in workplaces, kitchens, and daily commercial use. Ideal for maintaining cleanliness and efficiency in high-traffic environments.</p>
-      
-      <div class="product-tags">
-        <span class="tag">Soft & Gentle</span>
-        <span class="tag">Hygienic Use</span>
-        <span class="tag">Easy Dispense</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- Product 5 -->
-  <div class="product-card" data-name="CPE Gloves">
-    <div class="product-gallery">
-      <div class="product-main-image">
-        <img src="images/cpe.png" alt="CPE Gloves" class="main-product-img">
-      </div>
-      <div class="product-thumbs">
-        <div class="product-thumb active" onclick="changeProductImage(this, 'images/cpe.png')">
-          <img src="images/cpe.png" alt="CPE Gloves 1">
-        </div>
-        <div class="product-thumb" onclick="changeProductImage(this, 'images/cpe1.png')">
-          <img src="images/cpe1.png" alt="CPE Gloves 2">
-        </div>
-      </div>
-    </div>
-    <div class="product-content">
-        <button class="add-cart-btn" onclick="addToCart(this)">Add to Enquiry</button>
-      <h3>CPE Gloves</h3>
-      <p>Lightweight CPE gloves suitable for food handling, hygiene protection, and general disposable use. Ideal for restaurants, kitchens, and food service operations.</p>
-      
-      <div class="product-size">
-  <span>Size:</span>
-  <button class="size-btn active" onclick="selectColor(this)">M</button>
-  <button class="size-btn" onclick="selectColor(this)">L</button>
-</div>
-      
-      <div class="product-tags">
-  <span class="tag">CPE Material</span>
-  <span class="tag">Disposable</span>
-  <span class="tag">Food Handling</span>
-</div>
-    </div>
-  </div>
-
-  <!-- Product 6 -->
-  <div class="product-card" data-name="HDPE Gloves">
-    <div class="product-gallery">
-      <div class="product-main-image">
-        <img src="images/hdpegloves.jpg" alt="HDPE Gloves" class="main-product-img">
-      </div>
-      <div class="product-thumbs">
-        <div class="product-thumb active" onclick="changeProductImage(this, 'images/hdpegloves.jpg')">
-          <img src="images/hdpegloves.jpg" alt="HDPE Gloves 1">
-        </div>
-        <div class="product-thumb" onclick="changeProductImage(this, 'images/hdpegloves1.jpg')">
-          <img src="images/hdpegloves1.jpg" alt="HDPE Gloves 2">
-        </div>
-      </div>
-    </div>
-    <div class="product-content">
-      <button class="add-cart-btn" onclick="addToCart(this)">Add to Enquiry</button>
-      <h3>HDPE Gloves</h3>
-      <p>Sturdy HDPE gloves designed for durability and protection in various industrial and commercial applications.</p>
-      
-      <div class="product-tags">
-        <span class="tag">HDPE Disposable Gloves</span>
-        <span class="tag">Food Handling Safe</span>
-        <span class="tag">Disposable & Hygienic</span> 
-      </div>
-    </div>
-  </div>
-
-</div>
+  </section>
 
   <!-- Why Us -->
   <section class="section" id="whyus">
@@ -1287,6 +1625,53 @@
     <a href="#contact" class="btn">Request a Quotation</a>
   </div>
 
+  <!-- Address & Map Section -->
+  <section class="address-section" id="location">
+    <div class="container">
+      <div class="address-heading">
+        <h2>Our Location</h2>
+        <p>Visit us or contact us for packaging & hygiene supply enquiries.</p>
+      </div>
+
+      <div class="address-grid">
+        <div class="address-card">
+          <h3>Proper Pack (M) Sdn Bhd</h3>
+          <p><strong>Address:</strong><br>
+          No 21 & 23, Jalan Pelepas 4/4,<br>
+          Tanjung Pelepas,<br>
+          81550 Gelang Patah,<br>
+          Johor Bahru, Johor</p>
+
+          <p><strong>Phone:</strong><br>
+          +60 18-389 4753</p>
+
+          <p><strong>Email:</strong><br>
+          pppmalaysia98@gmail.com</p>
+
+          <p><strong>Business Hours:</strong><br>
+          Mon - Sat: 9:00 AM - 6:00 PM</p>
+
+          <a 
+            href="https://maps.google.com/?q=No%2021%20and%2023%2C%20Jalan%20Pelepas%204%2F4%2C%20Tanjung%20Pelepas%2C%2081550%20Gelang%20Patah%2C%20Johor%20Bahru%2C%20Johor" 
+            target="_blank" 
+            class="map-btn">
+            Open in Google Maps
+          </a>
+        </div>
+
+        <div class="map-card">
+          <iframe 
+            src="https://www.google.com/maps?q=No%2021%20and%2023%2C%20Jalan%20Pelepas%204%2F4%2C%20Tanjung%20Pelepas%2C%2081550%20Gelang%20Patah%2C%20Johor%20Bahru%2C%20Johor&output=embed" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Contact -->
   <section class="section" id="contact">
     <h2 class="section-title">Contact Us</h2>
@@ -1308,7 +1693,7 @@
           </div>
           <div class="info-item">
             <strong>Email</strong>
-            <span>sales@properpack.com.my</span>
+            <span>pppmalaysia98@gmail.com</span>
           </div>
           <div class="info-item">
             <strong>Business Type</strong>
@@ -1340,124 +1725,227 @@
 
   <!-- Floating Buttons -->
   <div class="floating-actions">
+    <button class="float-btn top-btn" id="backToTopBtn" onclick="scrollToTop()" title="Back to Top">⬆️</button>
     <a href="tel:+60183894753" class="float-btn call" title="Call Now">📞</a>
     <a href="https://wa.me/60183894753" target="_blank" class="float-btn whatsapp" title="WhatsApp Us">💬</a>
   </div>
 
   <script>
-  function sendToWhatsApp(event) {
-  event.preventDefault();
+    let enquiryList = JSON.parse(localStorage.getItem("properPackEnquiryList")) || [];
 
-  const name = document.getElementById("name").value;
-  const company = document.getElementById("company").value;
-  const phone = document.getElementById("phone").value;
-  const message = document.getElementById("message").value;
+    function saveEnquiryList() {
+      localStorage.setItem("properPackEnquiryList", JSON.stringify(enquiryList));
+    }
 
-  const whatsappNumber = "60183894753";
+    function updateEnquiryCount() {
+      document.getElementById("enquiryCount").innerText = enquiryList.length;
+    }
 
-  const productText = enquiryList.length > 0 
-    ? enquiryList.join(", ") 
-    : "None";
+    function renderEnquiryList() {
+      const container = document.getElementById("enquiryListContainer");
 
-  const text = `Hello Proper Pack (M) Sdn Bhd,%0A%0A` +
-               `Name: ${name}%0A` +
-               `Company: ${company}%0A` +
-               `Phone: ${phone}%0A` +
-               `Products: ${productText}%0A` +
-               `Enquiry: ${message}`;
+      if (enquiryList.length === 0) {
+        container.innerHTML = `
+          <div class="empty-enquiry">
+            No products added yet.<br>
+            Add products from the product section to build your enquiry.
+          </div>
+        `;
+        return;
+      }
 
-  window.open(`https://wa.me/${whatsappNumber}?text=${text}`, "_blank");
-}
+      container.innerHTML = enquiryList.map((item, index) => `
+        <div class="enquiry-item">
+          <span>${item}</span>
+          <button class="remove-item-btn" onclick="removeEnquiryItem(${index})">Remove</button>
+        </div>
+      `).join("");
+    }
 
-  function changeProductImage(thumb, newSrc) {
-    const productCard = thumb.closest(".product-card");
-    const mainImage = productCard.querySelector(".main-product-img");
-    const allThumbs = productCard.querySelectorAll(".product-thumb");
+    function openEnquiryModal() {
+      renderEnquiryList();
+      document.getElementById("enquiryModal").classList.add("active");
+      document.body.style.overflow = "hidden";
+    }
 
-    mainImage.src = newSrc;
+    function closeEnquiryModal() {
+      document.getElementById("enquiryModal").classList.remove("active");
+      document.body.style.overflow = "";
+    }
 
-    allThumbs.forEach(t => t.classList.remove("active"));
-    thumb.classList.add("active");
-  }
+    function removeEnquiryItem(index) {
+      enquiryList.splice(index, 1);
+      saveEnquiryList();
+      updateEnquiryCount();
+      renderEnquiryList();
+    }
 
-function selectColor(button) {
-  // 找到同一组里的所有按钮
-  const buttons = button.parentElement.querySelectorAll('.size-btn');
-  
-  // 移除全部 active
-  buttons.forEach(btn => btn.classList.remove('active'));
-  
-  // 当前按钮加 active
-  button.classList.add('active');
-}
+    function clearEnquiryList() {
+      enquiryList = [];
+      saveEnquiryList();
+      updateEnquiryCount();
+      renderEnquiryList();
+      alert("Enquiry list cleared.");
+    }
 
-let enquiryList = [];
+    function scrollToContact() {
+      closeEnquiryModal();
+      document.getElementById("contact").scrollIntoView({ behavior: "smooth" });
+    }
 
-function addToCart(button) {
-  const productCard = button.closest(".product-card");
-  const productName = productCard.getAttribute("data-name");
+    function sendToWhatsApp(event) {
+      event.preventDefault();
 
-  const selected = productCard.querySelector(".size-btn.active");
-  const option = selected ? selected.innerText : "";
+      const name = document.getElementById("name").value.trim();
+      const company = document.getElementById("company").value.trim();
+      const phone = document.getElementById("phone").value.trim();
+      const message = document.getElementById("message").value.trim();
 
-  if (!enquiryList.includes(productName + " (" + option + ")")) {
-  enquiryList.push(productName + " (" + option + ")");
-  console.log("Total items:", enquiryList.length); 
-}
+      const whatsappNumber = "60183894753";
 
+      const productText = enquiryList.length > 0
+        ? enquiryList.join(", ")
+        : "Not specified";
 
-  console.log(enquiryList);
-  alert(productName + " added to enquiry list ✅");
-}
+      const text =
+        `Hello Proper Pack (M) Sdn Bhd,%0A%0A` +
+        `Name: ${name}%0A` +
+        `Company: ${company || "-"}%0A` +
+        `Phone: ${phone || "-"}%0A` +
+        `Products: ${productText}%0A` +
+        `Enquiry: ${message}`;
 
-  let currentSlide = 0;
-  const slides = document.querySelectorAll('.slide');
-  const dots = document.querySelectorAll('.dot');
-  let autoSlide;
+      window.open(`https://wa.me/${whatsappNumber}?text=${text}`, "_blank");
+    }
 
-  function showSlide(index) {
-    slides.forEach((slide, i) => {
-      slide.classList.toggle('active', i === index);
+    function changeProductImage(thumb, newSrc) {
+      const productCard = thumb.closest(".product-card");
+      const mainImage = productCard.querySelector(".main-product-img");
+      const allThumbs = productCard.querySelectorAll(".product-thumb");
+
+      mainImage.src = newSrc;
+
+      allThumbs.forEach(t => t.classList.remove("active"));
+      thumb.classList.add("active");
+    }
+
+    function selectOption(button) {
+      const productCard = button.closest(".product-card");
+      const optionGroup = button.parentElement;
+      const buttons = optionGroup.querySelectorAll(".size-btn");
+
+      buttons.forEach(btn => btn.classList.remove("active"));
+      button.classList.add("active");
+    }
+
+    function getSelectedOptions(productCard) {
+      const optionGroups = productCard.querySelectorAll(".product-size");
+      const selections = [];
+
+      optionGroups.forEach(group => {
+        const label = group.querySelector("span")?.innerText.replace(":", "").trim() || "Option";
+        const activeBtn = group.querySelector(".size-btn.active");
+
+        if (activeBtn) {
+          selections.push(`${label}: ${activeBtn.innerText.trim()}`);
+        }
+      });
+
+      return selections;
+    }
+
+    function addToCart(button) {
+      const productCard = button.closest(".product-card");
+      const productName = productCard.dataset.name || productCard.querySelector("h3").innerText.trim();
+      const selections = getSelectedOptions(productCard);
+
+      let fullName = productName;
+      if (selections.length > 0) {
+        fullName += ` (${selections.join(", ")})`;
+      }
+
+      enquiryList.push(fullName);
+      saveEnquiryList();
+      updateEnquiryCount();
+
+      button.innerText = "Added ✓";
+      button.style.background = "#16a34a";
+
+      setTimeout(() => {
+        button.innerText = "Add to Enquiry List";
+        button.style.background = "";
+      }, 1200);
+    }
+
+    let currentSlide = 0;
+    const slides = document.querySelectorAll(".slide");
+    const dots = document.querySelectorAll(".dot");
+    let sliderInterval;
+
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.toggle("active", i === index);
+      });
+
+      dots.forEach((dot, i) => {
+        dot.classList.toggle("active", i === index);
+      });
+
+      currentSlide = index;
+    }
+
+    function changeSlide(direction) {
+      let newIndex = currentSlide + direction;
+
+      if (newIndex < 0) newIndex = slides.length - 1;
+      if (newIndex >= slides.length) newIndex = 0;
+
+      showSlide(newIndex);
+    }
+
+    function goToSlide(index) {
+      showSlide(index);
+      restartSlider();
+    }
+
+    function startSlider() {
+      sliderInterval = setInterval(() => {
+        changeSlide(1);
+      }, 3500);
+    }
+
+    function restartSlider() {
+      clearInterval(sliderInterval);
+      startSlider();
+    }
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    window.addEventListener("scroll", () => {
+      const topBtn = document.getElementById("backToTopBtn");
+      if (window.scrollY > 400) {
+        topBtn.classList.add("show");
+      } else {
+        topBtn.classList.remove("show");
+      }
     });
 
-    dots.forEach((dot, i) => {
-      dot.classList.toggle('active', i === index);
+    document.getElementById("enquiryModal").addEventListener("click", function (e) {
+      if (e.target === this) {
+        closeEnquiryModal();
+      }
     });
 
-    currentSlide = index;
-  }
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") {
+        closeEnquiryModal();
+      }
+    });
 
-  function changeSlide(direction) {
-    let newIndex = currentSlide + direction;
-
-    if (newIndex < 0) newIndex = slides.length - 1;
-    if (newIndex >= slides.length) newIndex = 0;
-
-    showSlide(newIndex);
-    resetAutoSlide();
-  }
-
-  function goToSlide(index) {
-    showSlide(index);
-    resetAutoSlide();
-  }
-
-  function startAutoSlide() {
-    autoSlide = setInterval(() => {
-      let next = currentSlide + 1;
-      if (next >= slides.length) next = 0;
-      showSlide(next);
-    }, 3500);
-  }
-
-  function resetAutoSlide() {
-    clearInterval(autoSlide);
-    startAutoSlide();
-  }
-
-  showSlide(0);
-  startAutoSlide();
-</script>
-
+    updateEnquiryCount();
+    startSlider();
+  </script>
 </body>
 </html>
