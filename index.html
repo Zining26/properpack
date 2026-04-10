@@ -1038,10 +1038,149 @@
     }
 
     @media (max-width: 768px) {
-      .nav {
-        flex-wrap: wrap;
-        justify-content: center;
-      }
+
+  body {
+    font-size: 15px;
+  }
+
+  /* Header */
+  .nav {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .logo img {
+    height: 46px;
+  }
+
+  .nav-links {
+    gap: 12px;
+    font-size: 14px;
+  }
+
+  .nav-actions {
+    gap: 10px;
+  }
+
+  .nav-cta,
+  .enquiry-btn {
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+
+  /* Hero */
+  .hero {
+    padding: 40px 16px 30px;
+  }
+
+  .hero h1 {
+    font-size: 28px;
+    line-height: 1.2;
+  }
+
+  .hero p {
+    font-size: 14px;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  .hero-slider {
+    height: 240px;
+  }
+
+  /* Section spacing */
+  .section {
+    padding: 50px 16px;
+  }
+
+  .section-title {
+    font-size: 26px;
+  }
+
+  /* Product (🔥重点优化) */
+  .product-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .product-card {
+    border-radius: 20px;
+  }
+
+  .product-main-image {
+    height: 200px;
+  }
+
+  .product-content {
+    padding: 18px;
+  }
+
+  .product-content h3 {
+    font-size: 18px;
+  }
+
+  .product-content p {
+    font-size: 13px;
+  }
+
+  /* 按钮更像 Shopee/Lazada */
+  .add-cart-btn {
+    width: 100%;
+    padding: 12px;
+    font-size: 14px;
+    border-radius: 12px;
+  }
+
+  /* size按钮更清晰 */
+  .size-btn {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+
+  /* Why us */
+  .why-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Address */
+  .address-card {
+    padding: 20px;
+  }
+
+  .address-heading h2 {
+    font-size: 26px;
+  }
+
+  /* Contact */
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Floating buttons（更像App） */
+  .floating-actions {
+    right: 12px;
+    bottom: 12px;
+  }
+
+  .float-btn {
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+  }
+
+  /* Map */
+  .map-card,
+  .map-card iframe {
+    min-height: 260px;
+  }
+}
 
       .nav-links {
         flex-wrap: wrap;
