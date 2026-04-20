@@ -415,10 +415,10 @@
     }
 
     .product-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+}
 
     .product-card {
       background: white;
@@ -442,16 +442,16 @@
     }
 
     .product-main-image {
-      width: 100%;
-      height: 240px;
-      border-radius: 18px;
-      overflow: hidden;
-      background: linear-gradient(135deg, #eaf8ff, #f7fcff);
-      border: 1px solid #eef2f7;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+  width: 100%;
+  height:220px;
+  border-radius: 18px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #eaf8ff, #f7fcff);
+  border: 1px solid #eef2f7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
     .product-main-image img {
       width: 100%;
@@ -505,35 +505,39 @@
     }
 
     .product-content {
-      padding: 22px;
-      display: flex;
-      flex-direction: column;
-      flex: 1;
-    }
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 20px;
+}
 
     .product-content h3 {
-      font-size: 22px;
+      font-size: 20px;
       color: var(--dark);
-      margin-bottom: 10px;
+      margin-bottom: 6px;
+      min-height: 48px;
     }
 
     .product-content p {
-      color: var(--text);
-      font-size: 15px;
-      margin-bottom: 14px;
-    }
+  color: var(--text);
+  font-size: 15px;
+  margin-bottom: 10px;
+  min-height: auto;   /* ❗取消固定高度 */
+}
 
     .add-cart-btn {
-      margin-bottom: 12px;
-      padding: 10px 14px;
-      background: var(--primary);
-      color: white;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      font-weight: 700;
-      transition: 0.3s ease;
-    }
+  margin-top: auto;   /* ⭐关键：把按钮推到底 */
+  margin-bottom: 0;   /* ⭐取消原本的底部间距 */
+  width: 100%;
+  padding: 12px;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 700;
+  transition: 0.3s ease;
+}
 
     .add-cart-btn:hover {
       background: var(--primary-dark);
@@ -541,7 +545,58 @@
 
     .product-size {
       margin: 10px 0 14px;
+      min-height: 60px;
     }
+
+    .product-spec {
+  background: #f1f9ff;
+  border: 1px solid #dbeafe;
+  border-radius: 12px;
+  padding: 10px 12px;
+  margin-bottom: 12px;
+}
+
+.product-spec span {
+  font-size: 12px;
+  font-weight: 700;
+  color: #0284c7;
+  display: block;
+  margin-bottom: 2px;
+  text-transform: uppercase;
+}
+
+.product-spec p {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--dark);
+  margin: 0;
+}
+
+    .product-qty {
+  margin-bottom: 14px;
+}
+
+.product-qty span {
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 6px;
+}
+
+.qty-input {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #cbd5e1;
+  font-size: 14px;
+}
+
+.qty-input:focus {
+  border-color: var(--primary);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(17,181,245,0.1);
+}
 
     .product-size span {
       display: block;
@@ -582,7 +637,7 @@
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
-      margin-top: auto;
+      margin-top: 10px;
     }
 
     .tag {
@@ -1038,6 +1093,17 @@
     }
 
     @media (max-width: 768px) {
+  .product-main-image {
+    height: 180px;
+  }
+
+  .product-content h3 {
+    min-height: auto;
+  }
+
+  .product-content p {
+    min-height: auto;
+  }
 
   body {
     font-size: 15px;
@@ -1104,7 +1170,7 @@
     font-size: 26px;
   }
 
-  /* Product (🔥重点优化) */
+  /* Product */
   .product-grid {
     grid-template-columns: 1fr;
     gap: 18px;
@@ -1130,7 +1196,6 @@
     font-size: 13px;
   }
 
-  /* 按钮更像 Shopee/Lazada */
   .add-cart-btn {
     width: 100%;
     padding: 12px;
@@ -1138,18 +1203,15 @@
     border-radius: 12px;
   }
 
-  /* size按钮更清晰 */
   .size-btn {
     padding: 6px 10px;
     font-size: 12px;
   }
 
-  /* Why us */
   .why-grid {
     grid-template-columns: 1fr;
   }
 
-  /* Address */
   .address-card {
     padding: 20px;
   }
@@ -1158,12 +1220,10 @@
     font-size: 26px;
   }
 
-  /* Contact */
   .contact-grid {
     grid-template-columns: 1fr;
   }
 
-  /* Floating buttons（更像App） */
   .floating-actions {
     right: 12px;
     bottom: 12px;
@@ -1175,102 +1235,11 @@
     font-size: 20px;
   }
 
-  /* Map */
   .map-card,
   .map-card iframe {
     min-height: 260px;
   }
 }
-
-      .nav-links {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 16px;
-      }
-
-      .logo {
-        width: 100%;
-        justify-content: center;
-      }
-
-      .nav-actions {
-        width: 100%;
-        justify-content: center;
-        flex-wrap: wrap;
-      }
-
-      .hero {
-        padding-top: 50px;
-      }
-
-      .hero h1 {
-        font-size: 34px;
-      }
-
-      .hero p {
-        font-size: 16px;
-      }
-
-      .hero-slider {
-        height: 300px;
-      }
-
-      .slide {
-        inset: 12px;
-      }
-
-      .slide img {
-        border-radius: 18px;
-      }
-
-      .stats,
-      .product-grid,
-      .why-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .section {
-        padding: 60px 20px;
-      }
-
-      .section-title {
-        font-size: 30px;
-      }
-
-      .address-heading h2 {
-        font-size: 30px;
-      }
-
-      .cta h2 {
-        font-size: 28px;
-      }
-
-      .floating-actions {
-        right: 14px;
-        bottom: 14px;
-      }
-
-      .float-btn {
-        width: 54px;
-        height: 54px;
-        font-size: 22px;
-      }
-
-      .product-main-image {
-        height: 220px;
-      }
-
-      .product-thumb {
-        width: 58px;
-        height: 58px;
-        min-width: 58px;
-      }
-
-      .map-card,
-      .map-card iframe {
-        min-height: 320px;
-      }
-    }
   </style>
 </head>
 <body>
@@ -1433,9 +1402,18 @@
         </div>
 
         <div class="product-content">
-          <button class="add-cart-btn" onclick="addToCart(this)">Add to Enquiry List</button>
+          
           <h3>Face Masks</h3>
-          <p>Disposable and practical face masks suitable for workplaces, food handling environments, and daily commercial use.</p>
+
+<div class="product-spec">
+  <span>Packing</span>
+  <p>50 pcs x 40 boxes / CTN</p>
+</div>
+
+<p>
+  Disposable and practical face masks suitable for workplaces,
+  food handling environments, and daily commercial use.
+</p>
 
           <div class="product-size">
             <span>Colour:</span>
@@ -1443,11 +1421,21 @@
             <button class="size-btn" data-color="Blue" onclick="selectOption(this)">Blue</button>
           </div>
 
+          <div class="product-qty">
+  <span>Order QTY (carton):</span>
+  <input type="number" min="1" value="1" class="qty-input">
+</div>
+
           <div class="product-tags">
             <span class="tag">Disposable</span>
             <span class="tag">Comfort Fit</span>
             <span class="tag">Hygiene Use</span>
           </div>
+
+           <!-- ✅ 按钮放最底 -->
+  <button class="add-cart-btn" onclick="addToCart(this)">
+    Add to Enquiry List
+  </button>
         </div>
       </div>
 
@@ -1470,9 +1458,19 @@
           </div>
         </div>
         <div class="product-content">
-          <button class="add-cart-btn" onclick="addToCart(this)">Add to Enquiry List</button>
+
           <h3>Nitrile Gloves</h3>
-          <p>Reliable nitrile gloves for food preparation, hygienic handling, kitchen operations, and general commercial use.</p>
+
+<div class="product-spec">
+  <span>Packing</span>
+  <p>100 pcs x 10 boxes / CTN</p>
+</div>
+
+<p>
+ Reliable nitrile gloves for food preparation, hygienic handling, 
+ kitchen operations, and general commercial use.
+</p>
+          
 
           <div class="product-size">
             <span>Size:</span>
@@ -1482,11 +1480,21 @@
             <button class="size-btn" data-size="XL" onclick="selectOption(this)">XL</button>
           </div>
 
+          <div class="product-qty">
+  <span>Order QTY (carton):</span>
+  <input type="number" min="1" value="1" class="qty-input">
+</div>
+
           <div class="product-tags">
             <span class="tag">Food Handling</span>
             <span class="tag">Disposable</span>
             <span class="tag">Safe Use</span>
           </div>
+
+           <!-- ✅ 按钮放最底 -->
+  <button class="add-cart-btn" onclick="addToCart(this)">
+    Add to Enquiry List
+  </button>
         </div>
       </div>
 
@@ -1509,9 +1517,18 @@
           </div>
         </div>
         <div class="product-content">
-          <button class="add-cart-btn" onclick="addToCart(this)">Add to Enquiry List</button>
+
           <h3>Food Wraps</h3>
-          <p>Flexible food wrapping solutions to help preserve freshness, improve storage, and support takeaway or kitchen operations.</p>
+
+<div class="product-spec">
+  <span>Packing</span>
+  <p>12 roll / CTN</p>
+</div>
+
+<p>
+  Flexible food wrapping solutions to help preserve freshness, 
+  improve storage, and support takeaway or kitchen operations.
+</p>
 
           <div class="product-size">
             <span>Size:</span>
@@ -1519,11 +1536,21 @@
             <button class="size-btn" data-size='18"' onclick="selectOption(this)">18"</button>
           </div>
 
+          <div class="product-qty">
+  <span>Order QTY (carton):</span>
+  <input type="number" min="1" value="1" class="qty-input">
+</div>
+
           <div class="product-tags">
             <span class="tag">Freshness</span>
             <span class="tag">Kitchen Use</span>
             <span class="tag">F&B Supply</span>
           </div>
+
+           <!-- ✅ 按钮放最底 -->
+  <button class="add-cart-btn" onclick="addToCart(this)">
+    Add to Enquiry List
+  </button>
         </div>
       </div>
 
@@ -1546,15 +1573,35 @@
           </div>
         </div>
         <div class="product-content">
-          <button class="add-cart-btn" onclick="addToCart(this)">Add to Enquiry List</button>
+
           <h3>Pop Up Tissue</h3>
-          <p>Convenient and hygienic pop-up tissue for easy dispensing, daily cleaning, workplace use, and commercial environments.</p>
+
+<div class="product-spec">
+  <span>Packing</span>
+  <p>200 pcs x 60 packs / CTN</p>
+</div>
+
+<p>
+  Convenient and hygienic pop-up tissue for easy dispensing, 
+  daily cleaning, workplace use, and commercial environments.
+</p>
+          
+
+          <div class="product-qty">
+  <span>Order QTY (carton):</span>
+  <input type="number" min="1" value="1" class="qty-input">
+</div>
 
           <div class="product-tags">
             <span class="tag">Soft & Gentle</span>
             <span class="tag">Hygienic Use</span>
             <span class="tag">Easy Dispense</span>
           </div>
+
+           <!-- ✅ 按钮放最底 -->
+  <button class="add-cart-btn" onclick="addToCart(this)">
+    Add to Enquiry List
+  </button>
         </div>
       </div>
 
@@ -1574,9 +1621,19 @@
           </div>
         </div>
         <div class="product-content">
-          <button class="add-cart-btn" onclick="addToCart(this)">Add to Enquiry List</button>
+
           <h3>CPE Gloves</h3>
-          <p>Lightweight CPE gloves suitable for food handling, hygiene protection, and general disposable use. Ideal for restaurants, kitchens, and food service operations.</p>
+
+<div class="product-spec">
+  <span>Packing</span>
+  <p>100 pcs x 50 boxes / CTN</p>
+</div>
+
+<p>
+  Lightweight CPE gloves suitable for food handling, hygiene protection, 
+  and general disposable use. Ideal for restaurants, kitchens, and food service operations.
+</p>
+          
 
           <div class="product-size">
             <span>Size:</span>
@@ -1584,11 +1641,21 @@
             <button class="size-btn" data-size="L" onclick="selectOption(this)">L</button>
           </div>
 
+          <div class="product-qty">
+  <span>Order QTY (carton):</span>
+  <input type="number" min="1" value="1" class="qty-input">
+</div>
+
           <div class="product-tags">
             <span class="tag">CPE Material</span>
             <span class="tag">Disposable</span>
             <span class="tag">Food Handling</span>
           </div>
+
+           <!-- ✅ 按钮放最底 -->
+  <button class="add-cart-btn" onclick="addToCart(this)">
+    Add to Enquiry List
+  </button>
         </div>
       </div>
 
@@ -1608,15 +1675,35 @@
           </div>
         </div>
         <div class="product-content">
-          <button class="add-cart-btn" onclick="addToCart(this)">Add to Enquiry List</button>
+
           <h3>HDPE Gloves</h3>
-          <p>Sturdy HDPE gloves designed for durability and protection in various industrial and commercial applications.</p>
+
+<div class="product-spec">
+  <span>Packing</span>
+  <p>100 pcs x 50 packs / CTN</p>
+</div>
+
+<p>
+  Sturdy HDPE gloves designed for durability and protection 
+  in various industrial and commercial applications.
+</p>
+         
+
+          <div class="product-qty">
+  <span>Order QTY (carton):</span>
+  <input type="number" min="1" value="1" class="qty-input">
+</div>
 
           <div class="product-tags">
             <span class="tag">HDPE Disposable Gloves</span>
             <span class="tag">Food Handling Safe</span>
             <span class="tag">Disposable & Hygienic</span>
           </div>
+
+           <!-- ✅ 按钮放最底 -->
+  <button class="add-cart-btn" onclick="addToCart(this)">
+    Add to Enquiry List
+  </button>
         </div>
       </div>
 
@@ -1633,9 +1720,19 @@
           </div>
         </div>
         <div class="product-content">
-          <button class="add-cart-btn" onclick="addToCart(this)">Add to Enquiry List</button>
-          <h3>Hairnet</h3>
-          <p>High-quality hairnets designed to keep hair out of food and products, ensuring hygiene and compliance.</p>
+
+          <h3>Hairnets</h3>
+
+<div class="product-spec">
+  <span>Packing</span>
+  <p>100 pcs x 20 packs / CTN</p>
+</div>
+
+<p>
+  High-quality hairnets designed to keep hair out of food 
+  and products, ensuring hygiene and compliance.
+</p>
+          
 
           <div class="product-size">
             <span>Colour:</span>
@@ -1644,11 +1741,21 @@
             <button class="size-btn" data-color="White" onclick="selectOption(this)">White</button>
           </div>
 
+          <div class="product-qty">
+  <span>Order QTY (carton):</span>
+  <input type="number" min="1" value="1" class="qty-input">
+</div>
+
           <div class="product-tags">
             <span class="tag">Disposable Hairnet</span>
             <span class="tag">Comfortable Fit</span>
             <span class="tag">Hygienic Protection</span>
           </div>
+
+           <!-- ✅ 按钮放最底 -->
+  <button class="add-cart-btn" onclick="addToCart(this)">
+    Add to Enquiry List
+  </button>
         </div>
       </div>
 
@@ -1669,9 +1776,19 @@
         </div>
 
         <div class="product-content">
-          <button class="add-cart-btn" onclick="addToCart(this)">Add to Enquiry List</button>
+
           <h3>PVC Food Wrap</h3>
-          <p>High-quality PVC food wrap designed for safe and effective food packaging and storage.</p>
+
+<div class="product-spec">
+  <span>Packing</span>
+  <p>Varies on Size</p>
+</div>
+
+<p>
+  High-quality PVC food wrap designed for 
+  safe and effective food packaging and storage.
+</p>
+          
 
           <div class="product-size">
             <span>Size:</span>
@@ -1682,11 +1799,21 @@
             <button class="size-btn" data-size='18"' onclick="selectOption(this)">18"</button>
           </div>
 
+          <div class="product-qty">
+            <span>Order QTY (carton):</span>
+            <input type="number" min="1" value="1" class="qty-input">
+          </div>
+
           <div class="product-tags">
             <span class="tag">Freshness Protection</span>
             <span class="tag">Food Safe Use</span>
             <span class="tag">Packaging Essential</span>
           </div>
+
+           <!-- ✅ 按钮放最底 -->
+  <button class="add-cart-btn" onclick="addToCart(this)">
+    Add to Enquiry List
+  </button>
         </div>
       </div>
 
@@ -1706,15 +1833,35 @@
           </div>
         </div>
         <div class="product-content">
-          <button class="add-cart-btn" onclick="addToCart(this)">Add to Enquiry List</button>
+
           <h3>Clear Tape</h3>
-          <p>High-quality tape designed for secure sealing, carton packing, and daily industrial or commercial packaging use.</p>
+
+<div class="product-spec">
+  <span>Packing</span>
+  <p>Varies on Size</p>
+</div>
+
+<p>
+  High-quality tape designed for secure sealing, carton packing, 
+  and daily industrial or commercial packaging use.
+</p>
+          
+
+          <div class="product-qty">
+            <span>Order QTY (carton):</span>
+            <input type="number" min="1" value="1" class="qty-input">
+          </div>
 
           <div class="product-tags">
             <span class="tag">Secure Sealing</span>
             <span class="tag">Packaging Essential</span>
             <span class="tag">Daily Commercial Use</span>
           </div>
+
+           <!-- ✅ 按钮放最底 -->
+  <button class="add-cart-btn" onclick="addToCart(this)">
+    Add to Enquiry List
+  </button>
         </div>
       </div>
 
@@ -1994,27 +2141,41 @@
     }
 
     function addToCart(button) {
-      const productCard = button.closest(".product-card");
-      const productName = productCard.dataset.name || productCard.querySelector("h3").innerText.trim();
-      const selections = getSelectedOptions(productCard);
+  const productCard = button.closest(".product-card");
 
-      let fullName = productName;
-      if (selections.length > 0) {
-        fullName += ` (${selections.join(", ")})`;
-      }
+  const productName =
+    productCard.dataset.name ||
+    productCard.querySelector("h3").innerText.trim();
 
-      enquiryList.push(fullName);
-      saveEnquiryList();
-      updateEnquiryCount();
+  const selections = getSelectedOptions(productCard);
 
-      button.innerText = "Added ✓";
-      button.style.background = "#16a34a";
+  // ✅ 获取数量
+  const qtyInput = productCard.querySelector(".qty-input");
+  const quantity = qtyInput ? qtyInput.value : 1;
 
-      setTimeout(() => {
-        button.innerText = "Add to Enquiry List";
-        button.style.background = "";
-      }, 1200);
-    }
+  let fullName = productName;
+
+  if (selections.length > 0) {
+    fullName += ` (${selections.join(", ")})`;
+  }
+
+  // ✅ 加入数量
+  fullName += ` x${quantity}`;
+
+  enquiryList.push(fullName);
+
+  saveEnquiryList();
+  updateEnquiryCount();
+
+  // UI feedback
+  button.innerText = "Added ✓";
+  button.style.background = "#16a34a";
+
+  setTimeout(() => {
+    button.innerText = "Add to Enquiry List";
+    button.style.background = "";
+  }, 1200);
+}
 
     let currentSlide = 0;
     const slides = document.querySelectorAll(".slide");
